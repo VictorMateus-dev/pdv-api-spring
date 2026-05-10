@@ -3,6 +3,9 @@ package Cadastro_Clientes.Model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 public class Pdv {
@@ -15,5 +18,6 @@ public class Pdv {
 
     private String status;
 
-
+    @OneToMany(mappedBy = "pdv")
+    private List<Venda> vendas = new ArrayList<>();
 }
