@@ -5,15 +5,11 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Pdv {
+public class ItemVenda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String codigo;
-
-    private String status;
 
 
 }
