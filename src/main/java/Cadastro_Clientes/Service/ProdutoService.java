@@ -1,6 +1,7 @@
 package Cadastro_Clientes.Service;
 
 
+import Cadastro_Clientes.DTO.ProdutoRequestDTO;
 import Cadastro_Clientes.Model.Produtos;
 import Cadastro_Clientes.Repository.ProdutosRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,22 +15,37 @@ import java.util.Optional;
 public class ProdutoService {
     public final ProdutosRepository produtosRepository;
 
-    public final Produtos adicionar(Produtos produto){
-        return produtosRepository.save(produto);
+    public void save(ProdutoRequestDTO produtoRequestDTO){
+       Produtos produto = Produtos.builder()
+               .codigo_Barras(produtoRequestDTO.codigo_Barras())
+               .nome(produtoRequestDTO.nome())
+               .descricao(produtoRequestDTO.descricao())
+               .preco(produtoRequestDTO.preco())
+               .estoque(produtoRequestDTO.estoque())
+                       .build();
+
+        produtosRepository.save(produto);
     }
+
     public final List<Produtos> listar(){
         return produtosRepository.findAll();
     }
+
     public final Optional<Produtos> buscarPorId(Long codigo_Barras){
         return produtosRepository.findById(codigo_Barras);
     }
+
     public void deletarProduto(Long codigo_Barras){
         produtosRepository.deleteById(codigo_Barras);
     }
+
     public final List<Produtos> listarMaiorPreco(){
         return produtosRepository.findAllByOrderByPrecoDesc();
     }
+
     public final List<Produtos> listarMenorPreco(){
         return produtosRepository.findAllByOrderByPrecoAsc();
     }
+
+
 }

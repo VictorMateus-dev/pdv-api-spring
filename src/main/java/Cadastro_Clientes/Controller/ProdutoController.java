@@ -1,8 +1,10 @@
 package Cadastro_Clientes.Controller;
 
+import Cadastro_Clientes.DTO.ProdutoRequestDTO;
 import Cadastro_Clientes.Model.Produtos;
 import Cadastro_Clientes.Service.ProdutoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,19 +19,23 @@ public class ProdutoController {
     public final ProdutoService produtoService;
 
     @PostMapping
-    public Produtos salvar(@RequestBody Produtos produto){
-        return produtoService.adicionar(produto);
+    @ResponseStatus(HttpStatus.CREATED)
+    public void salvar(@RequestBody ProdutoRequestDTO produtoRequestDTO){
+        produtoService.save(produtoRequestDTO);
     }
+
     @GetMapping
     public List<Produtos> listar(){
         return produtoService.listar();
     }
+
     @GetMapping("/{codigo_Barras}")
     public ResponseEntity<Produtos> buscarPorCodigo(@PathVariable Long codigo_Barras){
         return produtoService.buscarPorId(codigo_Barras)
                 .map(ResponseEntity:: ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
     @DeleteMapping("/{codigo_Barras}")
     public ResponseEntity<Produtos> deletar(@PathVariable Long codigo_Barras){
         produtoService.deletarProduto(codigo_Barras);
@@ -45,4 +51,6 @@ public class ProdutoController {
     public List<Produtos> listarMenorPreco(){
         return produtoService.listarMenorPreco();
     }
+
+
 }
