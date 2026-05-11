@@ -16,10 +16,6 @@ public class Venda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "pdv_id")
-    private Pdv pdv;
-
     private LocalDateTime dataHora_Venda;
 
     private double valorTotal;
@@ -29,6 +25,10 @@ public class Venda {
     private double valorFinal;
 
     private String status;
+
+    @ManyToOne
+    @JoinColumn(name = "pdv_id")
+    private Pdv pdv;
 
     @ManyToMany
     @JoinTable(
