@@ -30,13 +30,8 @@ public class Venda {
     @JoinColumn(name = "pdv_id")
     private Pdv pdv;
 
-    @ManyToMany
-    @JoinTable(
-            name = "venda_produto",
-            joinColumns = @JoinColumn(name = "venda_id"),
-            inverseJoinColumns = @JoinColumn(name = "produto_id")
-    )
-    private List<Produtos> produtos = new ArrayList<>();
+    @OneToMany(mappedBy = "venda")
+    private List<ItemVenda> listVenda = new ArrayList<>();
 
 
 }

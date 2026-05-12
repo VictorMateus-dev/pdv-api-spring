@@ -3,9 +3,11 @@ package Cadastro_Clientes.Controller;
 import Cadastro_Clientes.DTO.ProdutoRequestDTO;
 import Cadastro_Clientes.Model.Produtos;
 import Cadastro_Clientes.Service.ProdutoService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,13 +16,14 @@ import java.util.List;
 @RequestMapping("/produtos")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
+@Validated
 public class ProdutoController {
 
     public final ProdutoService produtoService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void salvar(@RequestBody ProdutoRequestDTO produtoRequestDTO){
+    public void salvar(@Valid @RequestBody ProdutoRequestDTO produtoRequestDTO){
         produtoService.save(produtoRequestDTO);
     }
 

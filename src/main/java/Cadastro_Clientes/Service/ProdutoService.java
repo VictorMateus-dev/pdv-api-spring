@@ -6,6 +6,7 @@ import Cadastro_Clientes.Model.Produtos;
 import Cadastro_Clientes.Repository.ProdutosRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PatchMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -46,6 +47,5 @@ public class ProdutoService {
     public final List<Produtos> listarMenorPreco(){
         return produtosRepository.findAllByOrderByPrecoAsc();
     }
-
 
 }
