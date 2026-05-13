@@ -15,4 +15,29 @@ API REST para gerenciamento de um sistema de mercado (PDV), desenvolvida com Spr
 - **Lombok**
 - **Maven**
 
+## 📦 Estrutura do Projeto
 
+```
+src/
+└── main/
+    ├── java/
+    │   └── br/com/cadastro/pdv/
+    │       ├── controller/
+    │       ├── model/
+    │       ├── repository/
+    │       └── service/
+    └── resources/
+        └── application.properties
+```
+---
+
+## 🔒 Segurança
+
+A autenticação via **Spring Security** está sendo implementada. A previsão é utilizar **JWT (JSON Web Token)** para proteger os endpoints da API.
+
+
+## 👨‍💻 Autor
+
+**Victor Mateus**
+
+[![GitHub](https://img.shields.io/badge/GitHub-VictorMateus--dev-black?logo=github)](https://github.com/VictorMateus-dev)
