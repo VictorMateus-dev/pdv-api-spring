@@ -17,14 +17,19 @@ public class VendaService {
     public List<Venda> listar(){
         return vendaRepository.findAll();
     }
+
     public Optional<Venda> buscarById(Long id){
         return vendaRepository.findById(id);
     }
-    public void cancelarVenda(Long id){
-        if(buscarById(id) !=null){
+
+    public void cancelarVenda(Long id) {
+        if (vendaRepository.existsById(id)) {
             vendaRepository.deleteById(id);
         }
     }
 
+    public Venda criarVenda(Venda venda){
+        return vendaRepository.save(venda);
+    }
 
 }
