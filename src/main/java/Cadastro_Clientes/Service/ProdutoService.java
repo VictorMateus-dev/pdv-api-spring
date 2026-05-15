@@ -47,5 +47,4 @@ public class ProdutoService {
     public final List<Produtos> listarMenorPreco(){
         return produtosRepository.findAllByOrderByPrecoAsc();
     }
-
 }

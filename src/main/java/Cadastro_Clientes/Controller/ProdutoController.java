@@ -27,6 +27,8 @@ public class ProdutoController {
         produtoService.save(produtoRequestDTO);
     }
 
+
+
     @GetMapping
     public List<Produtos> listar(){
         return produtoService.listar();
@@ -54,6 +56,5 @@ public class ProdutoController {
     public List<Produtos> listarMenorPreco(){
         return produtoService.listarMenorPreco();
     }
-
 
 }
